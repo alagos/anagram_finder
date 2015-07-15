@@ -1,14 +1,14 @@
-.inner.cover(ng-controller="AnagramController as anagramCtrl")
+form.inner.cover(ng-controller="AnagramController" ng-submit="search()")
   .row
     h1.cover-heading Buscador de anagramas 1.0
     p.lead
       | Escribe una palabra para buscar los anagramas existentes
     p.lead
-      input(type='text', placeholder='Escribir una palabra', ng-model='anagramCtrl.input', maxlength=12)
+      input(type='text', placeholder='Escribir una palabra', ng-model='word', maxlength=12)
     p.lead
-      button.btn.btn-lg.btn-default(ng-click="anagramCtrl.search()")
+      button.btn.btn-lg.btn-default
         span.glyphicon.glyphicon-search(aria-hidden="true")
         |  Buscar
   .row
-    .col-md-3(ng-repeat="anagram in anagramCtrl.anagrams")
+    .col-md-3(ng-repeat="anagram in anagrams")
       h4 {{ anagram }}
