@@ -4,13 +4,7 @@ do ->
   app.controller 'AnagramController', ->
     this.input = 'alter'
     this.anagrams = []
-    this.list = [
-      'later'
-      'alert'
-      'alter'
-      'altor'
-      'caca'
-    ]
+    this.list = []
 
     this.search = ->
       this.anagrams = []
@@ -33,3 +27,10 @@ do ->
         pos = i.charCodeAt(0) - 97
         array[pos] = if array[pos] == undefined then 0 else array[pos] + 1
       array
+
+    this.loadWordList = ->
+      context = this
+      $.getJSON "wordlist.json", (json)->
+        context.list = json
+
+    this.loadWordList()
