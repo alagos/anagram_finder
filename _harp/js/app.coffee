@@ -9,9 +9,11 @@ do ->
 
     $scope.search = ->
       $scope.anagrams = []
-      inputArr = $scope.positionArrayFor($scope.word)
+      word = removeDiacritics($scope.word).replace(/\W+/g, '')
+      console.info(word)
+      inputArr = $scope.positionArrayFor(word)
       for l in $scope.list
-        if $scope.word.length == l.length
+        if word.length == l.length
           listArr = $scope.positionArrayFor(l)
           count = 0
           isAnagram = true
